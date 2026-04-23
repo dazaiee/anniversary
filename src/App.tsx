@@ -87,7 +87,9 @@ export default function App() {
         setShowCelebration(true);
         setPinTarget(null);
       } else {
-        setRevealedMessage(reasons[pinTarget.id]);
+        const fallbackMsg = "You mean everything to me. 💕";
+        const msg = reasons[pinTarget.id] || (reasons.length > 0 ? reasons[pinTarget.id % reasons.length] : fallbackMsg);
+        setRevealedMessage(msg);
         setPhase("revealing");
       }
     }, 500);
@@ -104,7 +106,10 @@ export default function App() {
       setPoppedSet((prev) => {
         if (isPageComplete(currentPage, prev) && !isLastPage(currentPage)) {
           setTimeout(() => {
-            setCurrentPage((p) => Math.min(p + 1, TOTAL_PAGES - 1));
+            setCurrentPage((p) => {
+              // Only advance if we are still on the same page, to prevent double-jumps
+              return p === currentPage ? Math.min(p + 1, TOTAL_PAGES - 1) : p;
+            });
           }, 400);
         }
         return prev;
@@ -134,10 +139,15 @@ export default function App() {
       <FloatingHearts />
 
       {/* Header with counter */}
-      <HeaderCounter popped={poppedCount} total={TOTAL_BALLOONS} />
+      <HeaderCounter popped={poppedCount} total={TOTAL_BALLOONS - 1} />
 
-      {/* Page indicator */}
-      <PageIndicator current={currentPage} total={TOTAL_PAGES} />
+      {/* Page indicator with navigation */}
+      <PageIndicator 
+        current={currentPage} 
+        total={TOTAL_PAGES} 
+        onPrev={() => setCurrentPage(p => Math.max(0, p - 1))}
+        onNext={() => setCurrentPage(p => Math.min(TOTAL_PAGES - 1, p + 1))}
+      />
 
       {/* Balloon Grid */}
       <main className="flex-1 relative z-10 px-3 pb-24 pt-2">
@@ -153,6 +163,7 @@ export default function App() {
             giantPopping={
               phase === "popping" && pinTarget?.id === GIANT_BALLOON_ID
             }
+            isLastPage={onLastPage}
           />
         </AnimatePresence>
       </main>

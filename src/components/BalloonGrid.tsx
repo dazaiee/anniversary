@@ -10,6 +10,7 @@ interface BalloonGridProps {
   showGiant: boolean;
   onGiantClick: (rect: DOMRect) => void;
   giantPopping: boolean;
+  isLastPage?: boolean;
 }
 
 const gridVariants = {
@@ -32,6 +33,7 @@ export default function BalloonGrid({
   showGiant,
   onGiantClick,
   giantPopping,
+  isLastPage = false,
 }: BalloonGridProps) {
   return (
     <motion.div
@@ -39,7 +41,9 @@ export default function BalloonGrid({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="grid grid-cols-4 gap-2 sm:gap-4 max-w-[360px] sm:max-w-lg mx-auto w-full px-2 sm:px-0"
+      className={`grid gap-2 sm:gap-4 max-w-[360px] sm:max-w-lg mx-auto w-full px-2 sm:px-0 ${
+        isLastPage ? "grid-cols-1 place-items-center" : "grid-cols-4"
+      }`}
     >
       {balloonIds.map((id) => (
         <HeartBalloon
@@ -53,7 +57,7 @@ export default function BalloonGrid({
 
       {/* Giant balloon appears after all normal ones on last page are popped */}
       {showGiant && (
-        <div className="col-span-4 flex justify-center mt-4">
+        <div className={`${isLastPage ? 'col-span-1' : 'col-span-4'} flex justify-center mt-4`}>
           <FinalGiantBalloon onClick={onGiantClick} isPopping={giantPopping} />
         </div>
       )}

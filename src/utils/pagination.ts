@@ -1,14 +1,14 @@
 export const BALLOONS_PER_PAGE = 24;
-export const TOTAL_BALLOONS = 365;
+export const TOTAL_BALLOONS = 366; // 365 normal reasons + 1 giant balloon
 /** Normal balloons on the very last page (before the giant one) */
 export const LAST_PAGE_NORMAL = 5;
 
 /**
  * We reserve 6 balloons for the final page (5 normal + 1 giant).
- * The remaining 359 fill regular pages of 24 each.
- * 359 = 14 × 24 + 23, giving us 15 regular pages + 1 final = 16 total.
+ * The remaining 360 fill regular pages of 24 each exactly.
+ * 360 = 15 × 24, giving us 15 regular pages + 1 final = 16 total.
  */
-const REGULAR_BALLOONS = TOTAL_BALLOONS - LAST_PAGE_NORMAL - 1; // 359
+const REGULAR_BALLOONS = TOTAL_BALLOONS - LAST_PAGE_NORMAL - 1; // 360
 export const REGULAR_PAGES = Math.ceil(REGULAR_BALLOONS / BALLOONS_PER_PAGE); // 15
 export const TOTAL_PAGES = REGULAR_PAGES + 1; // 16
 

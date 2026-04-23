@@ -141,7 +141,7 @@ export default function FinalCelebration() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         >
-          Happiest Anniversary, My Love
+          Happiest Anniversary, My Angel
         </motion.h2>
 
         {/* Subtitle */}
@@ -159,8 +159,8 @@ export default function FinalCelebration() {
         </motion.p>
 
         {/* Heartfelt closing */}
-        <motion.p
-          className="text-base sm:text-lg leading-relaxed max-w-md mx-auto"
+        <motion.div
+          className="text-base sm:text-lg leading-relaxed max-w-md mx-auto flex flex-col gap-2"
           style={{
             fontFamily: "var(--font-body)",
             color: "#8a5a7a",
@@ -169,10 +169,31 @@ export default function FinalCelebration() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.6 }}
         >
-          365 days, 365 reasons, and still not enough words
-          to describe how much you mean to me. Here's to forever
-          with you, my love. 🤍
-        </motion.p>
+          <p>365 days, 365 reasons, and still not enough words to describe how much you mean to me, Khushi.</p>
+          <p>Thank you for choosing me.</p>
+          <p>Thank you for making my life so beautiful.</p>
+          <p>I want to live forever with you, my love. 🤍</p>
+          <p className="mt-2 font-medium text-pink-500">Here is a song for you.</p>
+        </motion.div>
+
+        {/* Spotify Embed */}
+        <motion.div
+          className="mt-6 mx-auto w-full max-w-[300px]"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 2, duration: 0.6 }}
+        >
+          <iframe 
+            style={{ borderRadius: "12px" }} 
+            src="https://open.spotify.com/embed/track/3ihRHbHv7rxX9YFd4FFFBb?utm_source=generator" 
+            width="100%" 
+            height="152" 
+            frameBorder="0" 
+            allowFullScreen={false} 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy"
+          ></iframe>
+        </motion.div>
 
         {/* Decorative line */}
         <motion.div
@@ -182,15 +203,15 @@ export default function FinalCelebration() {
           }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ delay: 2, duration: 0.8 }}
+          transition={{ delay: 2.3, duration: 0.8 }}
         />
 
         {/* Final sparkle */}
         <motion.div
-          className="mt-4 text-2xl"
+          className="mt-4 text-2xl pb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 0.5, 1] }}
-          transition={{ delay: 2.3, duration: 2, repeat: Infinity }}
+          transition={{ delay: 2.6, duration: 2, repeat: Infinity }}
         >
           ✨ 💕 ✨
         </motion.div>
