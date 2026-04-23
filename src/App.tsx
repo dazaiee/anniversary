@@ -150,7 +150,7 @@ export default function App() {
       />
 
       {/* Balloon Grid */}
-      <main className="flex-1 relative z-10 px-3 pb-24 pt-2">
+      <main className="flex-1 relative z-10 px-3 pb-4 sm:pb-12 pt-2 flex flex-col min-h-0">
         <AnimatePresence mode="wait">
           <BalloonGrid
             key={currentPage}

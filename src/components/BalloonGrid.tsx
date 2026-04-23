@@ -41,8 +41,8 @@ export default function BalloonGrid({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className={`grid gap-2 sm:gap-4 max-w-[360px] sm:max-w-lg mx-auto w-full px-2 sm:px-0 ${
-        isLastPage ? "grid-cols-1 place-items-center" : "grid-cols-4"
+      className={`grid gap-1 sm:gap-4 max-w-[360px] sm:max-w-lg mx-auto w-full flex-1 min-h-0 px-1 sm:px-0 ${
+        isLastPage ? "grid-cols-1 grid-rows-6 place-items-center" : "grid-cols-4 grid-rows-6 place-items-center"
       }`}
     >
       {balloonIds.map((id) => (

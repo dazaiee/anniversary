@@ -88,7 +88,7 @@ function HeartBalloon({
         onClick={handleClick}
         disabled={isPopped}
         aria-label={`Heart balloon ${id + 1}${isPopped ? " (popped)" : ""}`}
-        className="relative w-20 h-24 sm:w-24 sm:h-28 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 rounded-full disabled:cursor-default cursor-pointer"
+        className="relative w-full h-full max-w-[5rem] max-h-[6rem] sm:max-w-[6rem] sm:max-h-[7rem] flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 rounded-full disabled:cursor-default cursor-pointer"
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
         {isPopping ? (
@@ -99,7 +99,7 @@ function HeartBalloon({
             animate={{ scale: [1, 1.3, 0], rotate: [0, 10, -10, 0] }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <span className="text-6xl sm:text-7xl select-none">❤️</span>
+            <span className="text-[min(14vw,6.5vh)] sm:text-7xl select-none leading-none">❤️</span>
             <PopParticles />
           </motion.div>
         ) : isPopped ? (
@@ -142,7 +142,7 @@ function HeartBalloon({
               }}
             />
             {/* Heart emoji */}
-            <span className="relative text-6xl sm:text-7xl select-none drop-shadow-md">
+            <span className="relative text-[min(14vw,6.5vh)] sm:text-7xl select-none drop-shadow-md leading-none">
               ❤️
             </span>
             {/* String below heart */}
